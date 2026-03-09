@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: school-assistant-backend
+    env: node
+    region: oregon
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node src/index.js
+    envVars:
+      - key: GEMINI_API_KEY
+        value: AIzaSyDBGTPSBcVpsPga9WHQ_875RCG4mNiZtAk
+      - key: DATABASE_URL
+        value: postgresql://cheetah_aeef_user:ubuzXgFEieFRQRnH7bVMkxeMsUVigbjy@dpg-d6kq2856ubrc73emfueg-a.oregon-postgres.render.com/cheetah_aeef
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: school-assistant-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://school-assistant-backend.onrender.com

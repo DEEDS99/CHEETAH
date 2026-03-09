@@ -1,0 +1,43 @@
+{
+  "name": "school-assistant-app",
+  "version": "1.0.0",
+  "description": "School Assistant — AI Overlay Desktop App",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "concurrently \"npm run react\" \"wait-on http://localhost:3000 && electron .\"",
+    "react": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
+    "pack": "npm run build && electron-builder build --dir",
+    "dist": "npm run build && electron-builder build",
+    "test": "echo ok"
+  },
+  "homepage": "./",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "react-markdown": "^9.0.1",
+    "lucide-react": "^0.417.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.schoolassistant.app",
+    "productName": "School Assistant",
+    "directories": { "output": "dist" },
+    "files": ["build/**/*", "electron/**/*", "node_modules/**/*"],
+    "win": { "target": "nsis", "icon": "assets/icon.ico" },
+    "mac": { "target": "dmg", "icon": "assets/icon.icns" },
+    "linux": { "target": "AppImage" }
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  }
+}

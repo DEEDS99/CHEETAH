@@ -1,0 +1,12 @@
+{
+  "info": { "name": "School Assistant API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "item": [
+    { "name": "Health Check", "request": { "method": "GET", "url": "http://localhost:3001/health" } },
+    { "name": "Analyze Screen", "request": { "method": "POST", "url": "http://localhost:3001/api/analyze", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"screenshot\": \"data:image/png;base64,...\"}" } } },
+    { "name": "Chat", "request": { "method": "POST", "url": "http://localhost:3001/api/chat", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"message\": \"Solve: 2x + 5 = 13\", \"history\": []}" } } },
+    { "name": "Get Papers", "request": { "method": "GET", "url": "http://localhost:3001/api/papers" } },
+    { "name": "Upload Paper", "request": { "method": "POST", "url": "http://localhost:3001/api/papers/upload", "body": { "mode": "formdata", "formdata": [{"key":"paper","type":"file"},{"key":"title","value":"Maths 2023","type":"text"}] } } },
+    { "name": "Get History", "request": { "method": "GET", "url": "http://localhost:3001/api/history" } },
+    { "name": "Clear History", "request": { "method": "DELETE", "url": "http://localhost:3001/api/history" } }
+  ]
+}
